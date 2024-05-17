@@ -1,0 +1,20 @@
+.card {
+  width: 60%;
+  max-width: 300px;
+  min-width: 250px;
+  max-height: 350px;
+  border-radius: 20px;
+  box-shadow: rgba(112, 115, 118, 0.474) 0px 8px 24px;
+  background: #f7f9f6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+  padding-bottom: 10px;
+}
+.card-img {
+  width: 100%;
+  border-radius: 20px 20px 0 0;
+  overflow: hidden;
+}

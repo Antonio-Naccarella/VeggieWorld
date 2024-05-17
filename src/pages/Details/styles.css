@@ -1,0 +1,81 @@
+.details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.details-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 30px;
+}
+
+.details-img {
+  width: 90%;
+  max-width: 450px;
+  margin: 0 auto;
+}
+.details-img img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 10px 15px grey;
+}
+.ingredients,
+.instructions {
+  width: 90%;
+  max-width: 550px;
+  display: flex;
+  flex-direction: column;
+}
+.instructions ol li {
+  margin: 20px auto;
+  line-height: 1.3em;
+}
+
+.health-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.health-score,
+.health-score-red {
+  border-radius: 18%;
+  padding: 5px 20px;
+  background: linear-gradient(
+    to bottom right,
+    rgba(78, 245, 59, 0.908),
+    rgb(180, 235, 28),
+    rgb(29, 160, 12)
+  );
+  border: 1px solid rgb(184, 180, 180);
+  box-shadow: 0 8px 20px rgb(162, 161, 161);
+}
+.health-score-red {
+  background: linear-gradient(
+    to bottom right,
+    rgba(146, 37, 9, 0.908),
+    rgb(233, 131, 111),
+    rgb(117, 9, 8)
+  );
+}
+.details-btn {
+  margin: 40px auto;
+}
+
+@media screen and (min-width: 600px) {
+  .details-container {
+    flex-direction: row;
+    gap: 150px;
+  }
+  .ingredients ul {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .ingredients ul li {
+    width: 50%;
+  }
+}
