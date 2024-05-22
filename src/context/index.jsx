@@ -38,7 +38,7 @@ export default function GlobalState({ children }) {
       console.log(error)
       setIsLoading(false)
       if (error.response.status === 401) {
-        setErrorMsg("We had some problem, plese retry later.")
+        setErrorMsg("We had some problem, please retry later.")
       }
     }
   }
