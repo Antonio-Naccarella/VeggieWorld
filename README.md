@@ -1,6 +1,6 @@
 # Veggie World
 
-![VeggieWorld](src/image/veggie-world.png "Screen of the app.")
+![VeggieWorld](src/assets/image/veggie-world.png "Screen of the app.")
 
 You can try here the app: [Link](https://veggieworld.netlify.app)
 
