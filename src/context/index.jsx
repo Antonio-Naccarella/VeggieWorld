@@ -25,7 +25,7 @@ export default function GlobalState({ children }) {
             addRecipeInformation: true,
             diet: "vegetarian",
             number: 20,
-            apiKey: import.meta.env.API_KEY,
+            apiKey: import.meta.env.VITE_API_KEY,
           },
         }
       )

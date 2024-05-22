@@ -9,10 +9,11 @@ export default function Home() {
       {errorMsg && <h1 className="comunication">{errorMsg}</h1>}
       {isLoading && <h1 className="comunication">Loading...</h1>}
       <article className="display">
-        {data.length &&
-          data.map((item) => {
-            return <Card item={item} />
-          })}
+        {data.length
+          ? data.map((item) => {
+              return <Card item={item} />
+            })
+          : null}
       </article>
     </>
   )
