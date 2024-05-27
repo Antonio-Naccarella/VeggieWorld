@@ -1,11 +1,18 @@
 import { useContext } from "react"
 import { GlobalContext } from "../../context"
-import { Link } from "react-router-dom"
-import "./styles.css"
+import { Link, useNavigate } from "react-router-dom"
+import "./styles.scss"
 
 export default function Navbar() {
-  const { searchParam, setSearchParam, handleSubmit } =
-    useContext(GlobalContext)
+  const { searchParam, setSearchParam } = useContext(GlobalContext)
+
+  const navigate = useNavigate()
+  async function handleSubmit(e) {
+    e.preventDefault()
+    fetchData(searchParam)
+    setSearchParam("")
+    navigate("/")
+  }
   return (
     <>
       <nav className="navbar">
@@ -18,6 +25,7 @@ export default function Navbar() {
 
         <form onSubmit={handleSubmit}>
           <input
+            className="search-bar"
             type="text"
             value={searchParam}
             onChange={(e) => setSearchParam(e.target.value)}

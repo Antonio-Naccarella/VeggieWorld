@@ -1,13 +1,19 @@
 import { useContext } from "react"
 import { GlobalContext } from "../../context"
-import Card from "../../components/Card"
+import Card from "../../components/Card/Card"
+import Loading from "../../components/Loading/Loading"
+import Error from "../../components/Error/Error"
+import useFetcher from "../../useHook/useFetcher"
 
 export default function Home() {
   const { data, isLoading, errorMsg } = useContext(GlobalContext)
+
+  useFetcher(import.meta.env.VITE_GENERAL_SEARCH, "")
+
   return (
     <>
-      {errorMsg && <h1 className="comunication">{errorMsg}</h1>}
-      {isLoading && <h1 className="comunication">Loading...</h1>}
+      {errorMsg && <Error />}
+      {isLoading && <Loading />}
       <article className="display">
         {data.length
           ? data.map((item) => {

@@ -17,11 +17,12 @@
   width: 90%;
   max-width: 450px;
   margin: 0 auto;
-}
-.details-img img {
-  width: 100%;
-  border-radius: 10px;
-  box-shadow: 0 10px 15px grey;
+
+  img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 10px 15px grey;
+  }
 }
 .ingredients,
 .instructions {
@@ -71,11 +72,13 @@
     flex-direction: row;
     gap: 150px;
   }
-  .ingredients ul {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .ingredients ul li {
-    width: 50%;
+  .ingredients {
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    li {
+      width: 50%;
+    }
   }
 }

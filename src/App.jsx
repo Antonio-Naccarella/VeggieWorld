@@ -1,4 +1,4 @@
-import Navbar from "./components/Navbar"
+import Navbar from "./components/Navbar/Navbar"
 import Home from "./pages/Home"
 import Details from "./pages/Details"
 import Favorites from "./pages/favorites"

@@ -1,51 +1,36 @@
 import { useParams } from "react-router-dom"
-import { useEffect, useContext } from "react"
+import { useContext } from "react"
 import { GlobalContext } from "../../context"
-import axios from "axios"
-import "./styles.css"
+import "./styles.scss"
+import useFetcher from "../../useHook/useFetcher"
+import Loading from "../../components/Loading/Loading"
+import Error from "../../components/Error/Error"
 
 export default function Details() {
   const { id } = useParams()
-  const {
-    isLoading,
-    setIsLoading,
-    detailsData,
-    setDetailsData,
-    errorMsg,
-    setErrorMsg,
-    favoritesList,
-    handleAddToFavorites,
-  } = useContext(GlobalContext)
+  const { isLoading, detailsData, errorMsg, favoritesList, setFavoritesList } =
+    useContext(GlobalContext)
 
-  async function fetchDetailsData() {
-    setIsLoading(true)
-    try {
-      const response = await axios.get(
-        `https://api.spoonacular.com/recipes/${id}/information`,
-        {
-          params: {
-            includeNutrition: false,
-            addWinePairing: false,
-            addTasteData: false,
-            apiKey: import.meta.env.VITE_API_KEY,
-          },
-        }
-      )
-      setDetailsData(response.data)
-      setIsLoading(false)
-    } catch (error) {
-      setIsLoading(false)
-      setErrorMsg("Error: " + error.message)
+  useFetcher(import.meta.env.VITE_DETAILS_SEARCH, id)
+
+  function handleAddToFavorites(currentItem) {
+    let newFavoritesList = [...favoritesList]
+    const index = newFavoritesList.findIndex(
+      (item) => item.id === currentItem.id
+    )
+
+    if (index === -1) {
+      newFavoritesList.push(currentItem)
+    } else {
+      newFavoritesList.splice(index, 1)
     }
+    setFavoritesList(newFavoritesList)
   }
 
-  useEffect(() => {
-    fetchDetailsData()
-  }, [])
   return (
     <>
-      {errorMsg && <h1 className="comunication">{errorMsg}</h1>}
-      {isLoading && <h1 className="comunication">Loading...</h1>}
+      {errorMsg && <Error />}
+      {isLoading && <Loading />}
       {detailsData ? (
         <article className="details">
           <h1>{detailsData.title}</h1>
