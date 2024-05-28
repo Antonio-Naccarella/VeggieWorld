@@ -12,17 +12,21 @@ export default function Home() {
 
   return (
     <>
-      {errorMsg && <Error />}
-      {isLoading && <Loading />}
-      <article className="display">
-        {data.length ? (
-          data.map((item) => {
-            return <Card item={item} />
-          })
-        ) : (
-          <h1>We didn' t find your recipe</h1>
-        )}
-      </article>
+      {errorMsg ? (
+        <Error />
+      ) : isLoading ? (
+        <Loading />
+      ) : (
+        <article className="display">
+          {data.length ? (
+            data.map((item) => {
+              return <Card item={item} />
+            })
+          ) : (
+            <h1>We didn' t find your recipe</h1>
+          )}
+        </article>
+      )}
     </>
   )
 }

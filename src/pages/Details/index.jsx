@@ -29,9 +29,11 @@ export default function Details() {
 
   return (
     <>
-      {errorMsg && <Error />}
-      {isLoading && <Loading />}
-      {detailsData ? (
+      {errorMsg ? (
+        <Error />
+      ) : isLoading ? (
+        <Loading />
+      ) : detailsData ? (
         <article className="details">
           <h1>{detailsData.title}</h1>
           <div className="details-container">
@@ -89,7 +91,9 @@ export default function Details() {
             </ol>
           </div>
         </article>
-      ) : null}
+      ) : (
+        <h1>We didn' t find your recipe</h1>
+      )}
     </>
   )
 }
