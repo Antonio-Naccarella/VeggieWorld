@@ -3,6 +3,7 @@ import { createContext, useState } from "react"
 export const GlobalContext = createContext(null)
 
 export default function GlobalState({ children }) {
+  const [search, setSearch] = useState("")
   const [searchParam, setSearchParam] = useState("")
   const [data, setData] = useState([])
   const [isLoading, setIsLoading] = useState(false)
@@ -17,6 +18,8 @@ export default function GlobalState({ children }) {
         setData,
         isLoading,
         setIsLoading,
+        search,
+        setSearch,
         searchParam,
         setSearchParam,
         detailsData,

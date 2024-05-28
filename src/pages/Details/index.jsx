@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom"
 import { useContext } from "react"
 import { GlobalContext } from "../../context"
-import "./styles.scss"
 import useFetcher from "../../useHook/useFetcher"
 import Loading from "../../components/Loading/Loading"
 import Error from "../../components/Error/Error"
+import "./styles.scss"
 
 export default function Details() {
   const { id } = useParams()
@@ -36,7 +36,7 @@ export default function Details() {
           <h1>{detailsData.title}</h1>
           <div className="details-container">
             <div className="details-img">
-              <img src={detailsData.image} />
+              <img src={detailsData.image} alt={detailsData.title} />
             </div>
             <div className="informations">
               <button
@@ -72,8 +72,8 @@ export default function Details() {
               {detailsData.extendedIngredients.map((item) => (
                 <li>
                   <p>
-                    {item.measures.metric.amount}{" "}
-                    {item.measures.metric.unitLong} {item.name}
+                    {item.measures.metric?.amount}{" "}
+                    {item.measures.metric?.unitLong} {item.name}
                   </p>
                 </li>
               ))}
@@ -83,17 +83,13 @@ export default function Details() {
           <div className="instructions">
             <h3>Preparation:</h3>
             <ol>
-              {detailsData.analyzedInstructions[0].steps.map((item) => (
+              {detailsData.analyzedInstructions[0]?.steps?.map((item) => (
                 <li>{item.step}</li>
               ))}
             </ol>
           </div>
         </article>
-      ) : (
-        <h1 className="comunication">
-          We are sorry, we didn't find your recipe.
-        </h1>
-      )}
+      ) : null}
     </>
   )
 }

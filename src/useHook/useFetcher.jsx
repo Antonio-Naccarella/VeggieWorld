@@ -4,7 +4,7 @@ import { useContext } from "react"
 import { GlobalContext } from "../context"
 
 export default function useFetcher(type, item) {
-  const { setData, setIsLoading, setErrorMsg, setDetailsData } =
+  const { setData, setIsLoading, setErrorMsg, setDetailsData, searchParam } =
     useContext(GlobalContext)
 
   async function fetchData(type, item) {
@@ -26,7 +26,6 @@ export default function useFetcher(type, item) {
         if (response?.data?.results) {
           setData(response.data.results)
           setIsLoading(false)
-          navigate("/")
         }
       } else {
         const response = await axios.get(
@@ -41,10 +40,8 @@ export default function useFetcher(type, item) {
           }
         )
         if (response?.data) {
-          console.log(response)
           setDetailsData(response.data)
           setIsLoading(false)
-          // navigate("/")
         }
       }
     } catch (error) {
@@ -53,9 +50,12 @@ export default function useFetcher(type, item) {
       if (error.response.status === 402 || 401) {
         setErrorMsg("We had some problem, please retry later.")
       }
+      if (error.response.status === 404) {
+        setErrorMsg("We didn't find your recipe")
+      }
     }
   }
   useEffect(() => {
     fetchData(type, item)
-  }, [])
+  }, [searchParam])
 }

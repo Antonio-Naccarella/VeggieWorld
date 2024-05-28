@@ -16,10 +16,14 @@ The site allows users to explore a wide variety of vegetarian recipes thanks to 
 
 - HTML
 - CSS
+- Sass
 - JavaScript
+- Vite
 - React
 - React Hooks
+- Custom Hooks
 - Context API
+- React-router
 - Axios
 - Dotenv-webpack
 

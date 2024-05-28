@@ -4,15 +4,16 @@ import { Link, useNavigate } from "react-router-dom"
 import "./styles.scss"
 
 export default function Navbar() {
-  const { searchParam, setSearchParam } = useContext(GlobalContext)
-
+  const { search, setSearch, setSearchParam } = useContext(GlobalContext)
   const navigate = useNavigate()
-  async function handleSubmit(e) {
+
+  function handleSubmit(e) {
     e.preventDefault()
-    fetchData(searchParam)
-    setSearchParam("")
+    setSearchParam(search)
     navigate("/")
+    setSearch("")
   }
+
   return (
     <>
       <nav className="navbar">
@@ -27,8 +28,8 @@ export default function Navbar() {
           <input
             className="search-bar"
             type="text"
-            value={searchParam}
-            onChange={(e) => setSearchParam(e.target.value)}
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
           />
           <button className="btn" type="submit">
             Search
